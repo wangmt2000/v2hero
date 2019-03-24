@@ -1,20 +1,30 @@
+
+FROM ubuntu:latest as builder
+
+RUN apt-get update
+RUN apt-get install curl -y
+RUN curl -L -o /tmp/go.sh https://install.direct/go.sh
+RUN chmod +x /tmp/go.sh
+RUN /tmp/go.sh
+
 FROM alpine:latest
 
-ENV CONFIG_JSON1=none CONFIG_JSON2=none UUID=91cb66ba-a373-43a0-8169-33d4eeaeb857 CONFIG_JSON3=none CERT_PEM=none KEY_PEM=none VER=4.18.0
+LABEL maintainer "Darian Raymond <admin@v2ray.com>"
 
-RUN apk add --no-cache --virtual .build-deps ca-certificates curl \
- && mkdir -m 777 /v2raybin \ 
- && cd /v2raybin \
- && curl -L -H "Cache-Control: no-cache" -o v2ray.zip https://github.com/v2ray/v2ray-core/releases/download/v$VER/v2ray-linux-64.zip \
- && unzip v2ray.zip \
- && chmod +x /v2raybin/v2ray \
- && chgrp -R 0 /v2raybin \
- && chmod -R g+rwX /v2raybin 
- 
-ADD entrypoint.sh /entrypoint.sh
+COPY --from=builder /usr/bin/v2ray/v2ray /usr/bin/v2ray/
+COPY --from=builder /usr/bin/v2ray/v2ctl /usr/bin/v2ray/
+COPY --from=builder /usr/bin/v2ray/geoip.dat /usr/bin/v2ray/
+COPY --from=builder /usr/bin/v2ray/geosite.dat /usr/bin/v2ray/
+COPY config.json /etc/v2ray/config.json
 
-RUN chmod +x /entrypoint.sh 
+RUN set -ex && \
+    apk --no-cache add ca-certificates && \
+    mkdir /var/log/v2ray/ &&\
+    chmod +x /usr/bin/v2ray/v2ctl && \
+    chmod +x /usr/bin/v2ray/v2ray
 
-ENTRYPOINT /entrypoint.sh
+ENV PATH /usr/bin/v2ray:$PATH
 
-CMD /entrypoint.sh
+CMD ["v2ray", "-config=/etc/v2ray/config.json"]
+
+
