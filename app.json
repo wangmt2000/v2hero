@@ -5,14 +5,14 @@
   "env": {
     "UUID": {
        "description": "Vmess协议默认UUID，请输入自己的UUID",
-       "value": "8fd6dadc-0d59-4ae7-93bb-e6b8a231c2c2"
+       "value": "b4ce5fc5-6d1f-47e2-902e-2c13f6fb109d"
      },
     "V2RAY_RAY_BUFFER_SIZE": {
        "description": "每个连接的缓存大小，单位MB,0表示缓存无上限",
        "value": "10"
      }
   },
-  "website": "https://github.com/wangyi2005/v2ray-heroku",
-  "repository": "https://github.com/wangyi2005/v2ray-heroku",
+  "website": "https://github.com/wangmt2000/v2hero/tree/v2rayheroku2",
+  "repository": "https://github.com/wangmt2000/v2hero/tree/v2rayheroku2",
   "stack": "container"
  }
