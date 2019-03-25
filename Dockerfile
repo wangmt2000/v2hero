@@ -27,4 +27,4 @@ ENV PATH /usr/bin/v2ray:$PATH
 
 CMD ["v2ray", "-config=/etc/v2ray/config.json"]
 #wmt 
-EXPOSE 8001
+EXPOSE 443
