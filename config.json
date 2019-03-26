@@ -6,7 +6,7 @@
     "loglevel": "warning"
   },
   "inbounds": [{
-    "port": 80,
+    "port": ${PORT},
     "protocol": "vmess",
     "settings": {
       "clients": [
