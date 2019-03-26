@@ -24,9 +24,9 @@ RUN set -ex && \
     chmod +x /usr/bin/v2ray/v2ray
 
 ENV PATH /usr/bin/v2ray:$PATH
-
+PORT="${PORT:-8080}"\n\
+/bin/sed -i.bk "s/8001/${PORT}/" /etc/v2ray/config.json\n\
 CMD ["v2ray", "-config=/etc/v2ray/config.json"]
 #wmt 
 #EXPOSE 8001
-PORT="${PORT:-8080}"\n\
-/bin/sed -i.bk "s/listen 8080/listen ${PORT}/" /app/.heroku/nginx/conf/nginx.conf\n\
+
