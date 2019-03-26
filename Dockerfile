@@ -27,4 +27,6 @@ ENV PATH /usr/bin/v2ray:$PATH
 
 CMD ["v2ray", "-config=/etc/v2ray/config.json"]
 #wmt 
-EXPOSE 8001
+#EXPOSE 8001
+PORT="${PORT:-8080}"\n\
+/bin/sed -i.bk "s/listen 8080/listen ${PORT}/" /app/.heroku/nginx/conf/nginx.conf\n\
