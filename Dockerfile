@@ -25,7 +25,7 @@ RUN set -ex && \
 
 ENV PATH /usr/bin/v2ray:$PATH
 PORT="${PORT:-8080}"\n\
-/bin/sed -i.bk "s/8001/${PORT}/" /etc/v2ray/config.json\n\
+/bin/sed -i.bk "s/"port": 8001/"port": ${PORT}/" /etc/v2ray/config.json\n\
 CMD ["v2ray", "-config=/etc/v2ray/config.json"]
 #wmt 
 #EXPOSE 8001
