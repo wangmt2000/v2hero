@@ -1,4 +1,4 @@
-PORT=8001
+
 {
   "log" : {
     "access": "/var/log/v2ray/access.log",
