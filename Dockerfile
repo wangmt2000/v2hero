@@ -15,7 +15,7 @@ COPY --from=builder /usr/bin/v2ray/v2ray /usr/bin/v2ray/
 COPY --from=builder /usr/bin/v2ray/v2ctl /usr/bin/v2ray/
 COPY --from=builder /usr/bin/v2ray/geoip.dat /usr/bin/v2ray/
 COPY --from=builder /usr/bin/v2ray/geosite.dat /usr/bin/v2ray/
-COPY config.json /etc/v2ray/config.json
+#COPY config.json /etc/v2ray/config.json
 
 RUN set -ex && \
     apk --no-cache add ca-certificates && \
@@ -24,7 +24,7 @@ RUN set -ex && \
     chmod +x /usr/bin/v2ray/v2ray
 
 ENV PATH /usr/bin/v2ray:$PATH
-ENV PORT 8001
+#ENV PORT 8001
 
 #PORT="${PORT:-8080}"\n\
 #/bin/sed -i.bk "s/"port": 8001/"port": ${PORT}/" /etc/v2ray/config.json\n\
