@@ -1,0 +1,31 @@
+
+{
+    "name": "Start on Heroku: Go",
+    "description": "Go Getting Started Example App",
+    "keywords": [
+        "getting-started",
+        "go",
+        "sample",
+        "example"
+    ],
+    "website": "http://github.com/heroku/go-getting-started",
+    "repository": "http://github.com/heroku/go-getting-started",
+    "env": {
+    "CONFIG_JSON1": {
+            "description": "不熟悉v2ray的默认即可",
+            "value": "{\"log\":{\"access\":\"\",\"error\":\"\",\"loglevel\":\"warning\"},\"inbound\":{\"protocol\":\"vmess\",\"port\":"
+        },
+        "CONFIG_JSON2": {
+            "description": "拼接config.json,默认即可",
+            "value": ",\"settings\":{\"clients\":[{\"id\":\""
+        },
+        "UUID": {
+            "description": "搜索uuidgenerator在线生成自己的UUID",
+            "value": "8fb2b416-d48a-11e7-9296-cec278b6b50a"
+        },
+        "CONFIG_JSON3": {
+            "description": "拼接config.json,默认即可",
+            "value": "\",\"alterId\":64}]},\"streamSettings\":{\"network\":\"ws\"}},\"inboundDetour\":[],\"outbound\":{\"protocol\":\"freedom\",\"settings\":{}}}"
+        }
+    }
+}
